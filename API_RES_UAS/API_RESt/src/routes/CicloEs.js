@@ -21,7 +21,8 @@ module.exports = app => {
     const userData = {
 
       IdCicloEscolar:req.body.IdCicloEscolar,
-     
+     CicloEscolarA1:req.body.CicloEscolarA1,
+     CicloEscolarA2:req.body.CicloEscolarA2,
       Semestre: req.body.Semestre,
       FechaInicio:req.body.FechaInicio,
       FechaCierre: req.body.FechaCierre,
@@ -30,6 +31,27 @@ module.exports = app => {
     };
 
     UserModel.updateCiclo(userData, function (err, data) {
+      if (data && data.msg) {
+        res.status(200).json({data});
+      } else {
+        res.status(500).json({
+          success: false,
+          msg: 'Error'
+        });
+      }
+    });
+  });
+
+  app.put('/CicloEscolar/delUpd/', (req, res) => {
+    const userData = {
+
+      IdCicloEscolar:req.body.IdCicloEscolar
+   
+      
+   
+    };
+
+    UserModel.delete(userData, function (err, data) {
       if (data && data.msg) {
         res.status(200).json({data});
       } else {
@@ -50,7 +72,8 @@ module.exports = app => {
 
   app.post('/CicloEscolar', (req, res) => {
     var userData = {
-      
+      CicloEscolarA1:req.body.CicloEscolarA1,
+      CicloEscolarA2:req.body.CicloEscolarA2,
       Semestre: req.body.Semestre,
       FechaInicio: req.body.FechaInicio,
       FechaCierre:req.body.FechaCierre
