@@ -30,6 +30,7 @@ app.use (function(req,res,next){
 
 require('./routes/user')(app);
 require('./routes/CicloEs')(app);
+require('./routes/UnidadAcademica')(app);
 
 
 
