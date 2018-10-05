@@ -63,7 +63,7 @@ module.exports = app => {
     });
 
     app.put('/Unidad_Academica/update/:IDUnidad_Acad', (req, res) => {
-        if (isNaN(req.params.IDUnidad_Acad)) {
+        if ((req.params.IDUnidad_Acad)==null) {
             res.status(500).json({
                 status: false,
                 msg: message.MissingParameters

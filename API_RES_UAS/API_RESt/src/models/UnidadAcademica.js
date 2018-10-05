@@ -140,7 +140,7 @@ userModel.updateUnidadAcademica = (userData, callback) => {
         Tel_UA = ${connection.escape(userData.Tel_UA)},
         Nom_Direct = ${connection.escape(userData.Nom_Direct)},
         Nom_SA = ${connection.escape(userData.Nom_SA)},
-        Direcc_US = ${connection.escape(Direcc_UA)},
+        Direcc_UA = ${connection.escape(userData.Direcc_UA)},
         Red_Soc = ${connection.escape(userData.Red_Soc)},
         Nom_RT = ${connection.escape(userData.Nom_RT)},
         Tel_RT = ${connection.escape(userData.Tel_RT)},
@@ -186,6 +186,7 @@ userModel.deleteUnidad_Academica = (id, callback) => {
         `;
       connection.query(sqlExists, (err, row) => {
         if (row) {
+          createConnection();
           var sql = `DELETE FROM unidad_acad WHERE IDUnidad_Acad=` + connection.escape(id);
           connection.query(sql, (error, data) => {
             if (error) {
